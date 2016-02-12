@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Selz UI Developer Test</title>
+
+    <!-- Style-Sheet - LESS source file in /src folder -->
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="selz_widget_box">
+        <div class="selz_widget_ImageUrlSmall">
+          <img src="" alt="Product Picture" id="selz_widget_ImageUrlSmall">
+        </div>
+        <div class="selz_widget_Title"><span id="selz_widget_title"></span></div>
+        <div class="selz_widget_QuantityLeft"><span id="selz_widget_QuantityLeft"></span></div>
+        <div class="selz_widget_Description"><span id="selz_widget_Description"></span></div>
+        <div class="selz_widget_BuyAction">
+          <div class="selz_widget_buyNow_btn">
+            <input type="submit" value="" id="selz_widget_LinkText">
+          </div>
+          <div class="selz_widget_priceInfo">
+            <div class="selz_widget_RegularPrice"><span class="selz_widget_Price" id="selz_widget_Price"></span><span id="selz_widget_RegularPrice"></span></div>
+          </div>
+        </div>
+        <div class="selz_widget_PaymentLogos">
+          <img src="svg/payment_icons.svg" alt="Selz Payment Options">
+        </div>
+      </div>
+    </div>
+    
+      <script>
+        // Opening a JSON call to catch data from the URL
+        var r = new XMLHttpRequest();
+        r.overrideMimeType("application/json");
+        r.open("GET", "https://selz.com/embed/itemdata?itemurl=http://selz.co/1rvbgi3&callback=callback", true);
+
+        // Reading information from the JSON call
+        r.onreadystatechange = function () {
+              if (r.readyState == 4 && r.status == "200") {
+                var JSONPresponse = r.responseText;
+                //Cleaning the JSON response for JSON.parse
+                var removeLstCar = JSONPresponse.substr(0, JSONPresponse.length-2); //Removing the ");" at the end
+                var productDetails = removeLstCar.substr(9); //Removing the "Callback(" word
+                
+                var productDetailsRow = JSON.parse(productDetails);
+                document.getElementById('selz_widget_title').innerHTML = productDetailsRow.Title;
+                document.getElementById('selz_widget_QuantityLeft').innerHTML = productDetailsRow.QuantityLeft + " Available";
+                document.getElementById('selz_widget_Description').innerHTML = productDetailsRow.Description;
+                document.getElementById('selz_widget_RegularPrice').innerHTML = productDetailsRow.RegularPrice;
+                document.getElementById('selz_widget_Price').innerHTML = productDetailsRow.Price;
+                document.getElementById('selz_widget_ImageUrlSmall').src = productDetailsRow.ImageUrlSmall;
+                document.getElementById('selz_widget_LinkText').value = productDetailsRow.Resources.LinkText;
+              }
+        };
+        r.send(null);
+
+      </script>
+
+  </body>
+</html>

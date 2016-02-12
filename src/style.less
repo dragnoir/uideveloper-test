@@ -1,0 +1,141 @@
+/* Fonts Import */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+
+/* Reset CSS to reduce browser inconsistencies */
+@import "reset.css";
+
+
+/* Setting Variables and mixins */
+@main_color: #9f7345;
+
+.selz_widget_shadow{
+	-webkit-box-shadow: 0px 0px 8px 1px rgba(167, 167, 167, .75);
+	-moz-box-shadow: 0px 0px 8px 1px rgba(167, 167, 167, .75);
+	box-shadow: 0px 0px 8px 1px rgba(167, 167, 167, .75);
+}
+
+.selz_btn_radius{
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.selz_font_bigText{
+	font-family: 'Open Sans', sans-serif;
+}
+
+.selz_font_smallText{
+	font-family: 'Lato', sans-serif;
+}
+
+.selz_responsive_img{
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+
+
+/* Start Styling HTML content */
+body{
+	background-color: #eff2dd;
+	.selz_font_smallText;
+}
+
+/* The "width" here represend the wisth of the container of this widget */
+.container{
+	margin-top: 80px;
+	max-width: 288px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.selz_widget_box{
+	background-color: white;
+	.selz_widget_shadow;
+	padding-top: 30px;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
+.selz_widget_ImageUrlSmall img{
+	.selz_responsive_img;
+}
+
+.selz_widget_Title{
+	font-size: 24px;
+	.selz_font_bigText;
+	color: rgb(34, 34, 34);
+	margin-top: 22px;
+}
+
+.selz_widget_QuantityLeft{
+	font-size: 11px;
+	.selz_font_smallText;
+	color: lighten(@main_color, 25%);
+	text-transform: uppercase;
+	margin-top: 5px;
+}
+
+.selz_widget_Description {
+	margin-top: 18px;
+	font-size: 11px;
+	.selz_font_smallText;
+	color: rgb(135, 135, 135);
+	line-height: 1.273;
+	text-align: left;
+}
+
+.selz_widget_BuyAction{
+	margin-top: 38px;
+	height: 32px;
+}
+
+.selz_widget_buyNow_btn input[type=submit]{
+	border: 0 none;
+	background-color: @main_color;
+	color: white;
+	padding: 10px 22px;
+	.selz_font_smallText;
+	font-size: 10px;
+	text-transform: uppercase;
+	cursor:pointer;
+	.selz_btn_radius;
+}
+
+.selz_widget_buyNow_btn input[type=submit]:hover{
+	background-color: lighten(@main_color, 5%);
+}
+
+.selz_widget_RegularPrice{
+	color: @main_color;
+	.selz_font_smallText;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.selz_widget_Price{
+	color: #797979;
+	.selz_font_smallText;
+	font-size: 14px;
+	text-decoration: line-through;
+	margin-right: 12px;
+}
+
+.selz_widget_buyNow_btn{
+	float: left;
+}
+
+.selz_widget_priceInfo{
+	float: right;
+	line-height: 34px;
+}
+
+.selz_widget_PaymentLogos{
+	text-align: center;
+	margin-top: 16px;
+	height: 24px;
+}
